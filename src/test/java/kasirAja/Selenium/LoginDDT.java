@@ -23,7 +23,7 @@ public class LoginDDT {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions opt = new ChromeOptions();
-        opt.setHeadless(false);
+
 
         String csvDir = System.getProperty("user.dir")+"/src/test/data/test-data.csv";
 

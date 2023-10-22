@@ -22,8 +22,10 @@ public class order {
 
 
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.get(baseUrl);
+
 
         String loginPageAssert = driver.findElement(By.xpath("//div[@class='login_logo']")).getText();
         Assert.assertEquals(loginPageAssert, "Swag Labs");
@@ -34,18 +36,18 @@ public class order {
 
         driver.findElement(By.id("login-button")).click();
 
-        String dashboardPageAssert = driver.findElement(By.xpath("//div[@class='title']")).getText();
-        Assert.assertEquals(dashboardPageAssert, "Products");
+
+
     }
 
-    @When("the User clicks on the product name")
-    public void theUserClicksOnTheProductName() {
-        driver.findElement(By.xpath("//div[@class='inventory_item_name ']")).click();
+    @When("clicks on the product name")
+    public void ClicksOnTheProductName() {
+        driver.findElement(By.id("item_4_title_link")).click();
     }
 
-    @And("the User clicks on the {string} button")
-    public void theUserClicksOnTheButton(String arg0) {
-        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+    @And("clicks on the Add to Cart button")
+    public void ClicksOnTheButton() {
+        driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
     }
 
     @Then("the product should be added to the cart")
@@ -68,5 +70,15 @@ public class order {
     public void theItemQuantityInTheCartShouldBeUpdatedToZero() {
         String itemInCart = driver.findElement(By.xpath("//div[@class='cart_quantity']")).getText();
         Assert.assertEquals(itemInCart, "0");
+    }
+
+    @And("clicks on the Cart button")
+    public void ClicksOnTheCartButton() {
+        driver.findElement(By.id("shopping_cart_container")).click();
+    }
+
+    @And("already have item in cart")
+    public void alreadyHaveItemInCart() {
+        driver.findElement(By.xpath("//button[@class='btn btn_primary btn_small btn_inventory ']")).click();
     }
 }

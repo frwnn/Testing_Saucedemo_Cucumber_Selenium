@@ -44,11 +44,13 @@ public class logout {
         Assert.assertEquals(dashboardPageAssert, "Products");
     }
 
-    @When("the user clicks the {string} button")
+    @When("the user clicks the Logout button")
     public void theUserClicksTheLogoutButton() {
         driver.findElement(By.id("react-burger-menu-btn")).click();
+
         String BurMen = driver.findElement(By.id("logout_sidebar_link")).getText();
         Assert.assertEquals(BurMen, "Logout");
+
         driver.findElement(By.id("logout_sidebar_link")).click();
     }
 

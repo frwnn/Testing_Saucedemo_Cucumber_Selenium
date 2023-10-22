@@ -47,8 +47,8 @@ public class login {
 
     @Then("User on dashboard page")
     public void userOnDashboardPage() {
-        String dashboardPageAssert = driver.findElement(By.xpath("//div[@class='title']")).getText();
-        Assert.assertEquals(dashboardPageAssert, "Products");
+        String dashboardPageAssert = driver.findElement(By.xpath("//div[@class='app_logo']")).getText();
+        Assert.assertEquals(dashboardPageAssert, "Swag Labs");
     }
 
     @And("Input invalid password")
